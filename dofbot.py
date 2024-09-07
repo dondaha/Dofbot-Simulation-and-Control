@@ -7,13 +7,13 @@ import time
 class dofbot:
     def __init__(self, urdfPath):
         # # upper limits for null space
-        self.ll = [-1.57,-1.57,-2.62,-1.73,-np.pi]
+        self.ll = [-3.14,0,-1.05,-0.16,-np.pi]
         # upper limits for null space
-        self.ul = [1.57,1.57,2.62,1.73,np.pi]
+        self.ul = [3.14,3.14,4.19,3.3,np.pi]
         # joint ranges for null space
-        self.jr = [3.14,3.14,5.24,3.46,2*np.pi]
+        self.jr = [6.28,3.14,5.24,3.46,2*np.pi]
         # rest poses for null space
-        self.rp = [0, 0, 0, 0, 0]
+        self.rp = [1.57, 1.57, 1.57, 1.57, 1.57]
 
         self.maxForce = 200.
         self.fingerAForce = 2.5
@@ -27,7 +27,7 @@ class dofbot:
         self.gripper_angle = 0
         self.endEffectorPos = [0.55, 0.0, 0.6]
 
-        self.jointPositions = [0,0,0,0,0]
+        self.jointPositions = [1.57, 1.57, 1.57, 1.57, 1.57]
 
         self.motorIndices = []
         for jointIndex in range(self.numJoints):

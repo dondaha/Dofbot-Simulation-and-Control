@@ -12,7 +12,7 @@ if __name__ == '__main__':
     Reward = False
     while not Reward:
 
-        jointPoses = np.zeros(5)
+        jointPoses = [1.57, 1.57, 1.57, 1.57, 1.57]#np.zeros(5)
         gripperAngle = 0
         '''
         #获取物块位姿、目标位置和机械臂位姿，计算机器臂关节和夹爪角度，使得机械臂夹取绿色物块，放置到紫色区域。
