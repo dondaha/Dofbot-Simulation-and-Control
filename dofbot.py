@@ -76,7 +76,7 @@ class dofbot:
         for i in range(self.numJoints+1):
             state = p.getJointState(self.dofbotUid, i)
             jointPoses.append(state[0])
-        return jointPoses[:self.numJoints],jointPoses[:self.numJoints]
+        return jointPoses[:self.numJoints],jointPoses[self.numJoints]
 
 
     def get_pose(self):
