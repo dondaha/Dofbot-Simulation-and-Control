@@ -53,6 +53,13 @@ class dofbot:
         for i,jointIndex in enumerate(self.gripper_joints):
             p.resetJointState(self.dofbotUid, jointIndex, self.gripper_angle)
 
+    def forwardKinematic(self,jointPoses):
+        for i in range(self.numJoints):
+            p.resetJointState(self.dofbotUid,
+                              jointIndex=i,targetValue=jointPoses[i],targetVelocity=0)
+        return self.get_pose()
+
+
     def joint_control(self,jointPoses):
 
         for i in range(self.numJoints):
@@ -216,6 +223,9 @@ class DofbotEnv:
         '''
         jointPoses = self._dofbot.setInverseKine(pos, orn)
         return jointPoses
+
+    def dofbot_forwardKine(self,jointStates):
+        return self._dofbot.forwardKinematic(jointStates)
 
     def get_dofbot_jointPoses(self):
         '''
