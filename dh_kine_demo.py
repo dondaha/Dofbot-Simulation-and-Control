@@ -7,6 +7,18 @@ l2 = 0.08285            # 定义第三连杆长度
 l3 = 0.08285            # 定义第四连杆长度
 l4 = 0.12842            # 定义第五连杆长度
 
+# student version
+# 用改进DH参数发表示机器人正运动学
+dofbot = rtb.DHRobot(
+    [
+        rtb.RevoluteMDH(a = 1, alpha=11, d=111, offset=1111),
+        rtb.RevoluteMDH(),
+        rtb.RevoluteMDH(),
+        rtb.RevoluteMDH(),
+        rtb.RevoluteMDH()
+    ]
+)
+
 # 用改进DH参数发表示机器人正运动学
 dofbot = rtb.DHRobot(
     [

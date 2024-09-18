@@ -150,12 +150,12 @@ class Object:
 
         if self.num==1:
             p.resetBasePositionAndOrientation(self.id,
-                                         np.array([ 0.20,0.1,
+                                         np.array([ 0.20, 0.1,
                                                    self.half_height]),
                                         p.getQuaternionFromEuler([0, 0,np.pi/6]))
         else:
             p.resetBasePositionAndOrientation(self.id,
-                                         np.array([ 0.18,-0.1,
+                                         np.array([ 0.2, -0.1,
                                                    0.005]),
                                         p.getQuaternionFromEuler([0, 0,0]))
 
@@ -176,7 +176,7 @@ def check_pairwise_collisions(bodies):
 
 class DofbotEnv:
     def __init__(self):
-        self._timeStep = 0.02
+        self._timeStep = 0.001
         p.connect(p.GUI)
         p.resetDebugVisualizerCamera(1.0, 90, -40, [0, 0, 0])
         p.setPhysicsEngineParameter(numSolverIterations=150)
@@ -190,7 +190,7 @@ class DofbotEnv:
         self._dofbot = dofbot("models/dofbot_urdf_with_gripper/dofbot_with_gripper.urdf")
         self._object1 = Object("models/box_green.urdf", block=True,num=1)
         self._object2 = Object("models/box_purple.urdf", block=True,num=2)
-        self.target_pos = np.array([0.18,-0.1,0.15])
+        self.target_pos = np.array([0.2, -0.1, 0.15])
 
 
     def reset(self):
@@ -262,6 +262,7 @@ class DofbotEnv:
         '''
         pos, orn = self._object1.pos_and_orn()
         dist = np.sqrt((pos[0] - self.target_pos[0]) ** 2 + (pos[1] - self.target_pos[1]) ** 2)
+        print(dist, pos[2])
         if dist < 0.01 and pos[2] < 0.02:
             return True
         return False
