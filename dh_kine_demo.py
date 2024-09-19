@@ -1,4 +1,5 @@
 import roboticstoolbox as rtb
+import numpy as np
 
 pi = 3.1415926          # 定义pi常数
 
@@ -33,8 +34,22 @@ dofbot = rtb.DHRobot(
 # 输出机器人DH参数矩阵
 print(dofbot)
 
+
+target_pos = np.array([
+    [-1., 0., 0., 0.1,],
+    [0., 1., 0., 0.],
+    [0., 0., -1., -0.1],
+    [0., 0., 0., 1.]
+])
+
+# 输出机器人逆运动学demo
+ikine_result = dofbot.ik_LM(target_pos)[0]
+print("ikine: ", np.array(ikine_result) / 3.14 * 180.)
+
+
 # 输出机器人正运动学demo
-print(dofbot.fkine([0., 20. / 180. * pi, 15. / 180. * pi, 10. / 180. * pi, 0.]))
+fkine_result = dofbot.fkine(ikine_result)
+print("fkine: ", fkine_result)
 
 # 展示机器人正运动学demo
-dofbot.plot(q=[0., 40. / 180. * pi, 30. / 180. * pi, 20. / 180. * pi, 0.], block=True)
+dofbot.plot(q=ikine_result, block=True)
