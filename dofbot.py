@@ -70,7 +70,7 @@ class dofbot:
 
 
     def setInverseKine(self, pos, orn):
-        if orn == None:
+        if orn is None:
             jointPoses = p.calculateInverseKinematics(self.dofbotUid, 4, pos,
                                                       self.ll, self.ul, self.jr, self.rp)
         else:
@@ -239,7 +239,7 @@ class DofbotEnv:
         '''
         :return: 机械臂末端位姿，xyz+四元数
         '''
-        pos,orn = self._dofbot.get_pose()
+        pos, orn = self._dofbot.get_pose()
         return pos, orn
 
     def get_block_pose(self):
@@ -262,7 +262,6 @@ class DofbotEnv:
         '''
         pos, orn = self._object1.pos_and_orn()
         dist = np.sqrt((pos[0] - self.target_pos[0]) ** 2 + (pos[1] - self.target_pos[1]) ** 2)
-        print(dist, pos[2])
         if dist < 0.01 and pos[2] < 0.02:
             return True
         return False
