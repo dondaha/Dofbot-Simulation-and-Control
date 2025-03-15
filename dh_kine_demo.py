@@ -1,6 +1,8 @@
 import roboticstoolbox as rtb
 import numpy as np
 import math
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
 pi = 3.1415926          # 定义pi常数
 
@@ -98,7 +100,7 @@ target_pos0 = np.array([
     [0.0, 0.0, 0.0, 1.0]
 ])
 ikine_result0 = dofbot.ik_LM(target_pos0)[0]
-print("ikine: ", np.array(ikine_result0) / 3.14 * 180.)
+print("ikine: ", np.array(ikine_result0))
 dofbot.plot(q=ikine_result0, block=True)
 
 
@@ -110,7 +112,7 @@ target_pos1 = np.array([
     [0.0, 0.0, 0.0, 1.0]
 ])
 ikine_result1 = dofbot.ik_LM(target_pos1)[0]
-print("ikine: ", np.array(ikine_result1) / 3.14 * 180.)
+print("ikine: ", np.array(ikine_result1))
 dofbot.plot(q=ikine_result1, block=True)
 
 
@@ -122,7 +124,7 @@ target_pos2 = np.array([
     [0.0, 0.0, 0.0, 1.0]
 ])
 ikine_result2 = dofbot.ik_LM(target_pos2)[0]
-print("ikine: ", np.array(ikine_result2) / 3.14 * 180.)
+print("ikine: ", np.array(ikine_result2))
 dofbot.plot(q=ikine_result2, block=True)
 
 
@@ -134,7 +136,7 @@ target_pos3 = np.array([
     [0.0, 0.0, 0.0, 1.0]
 ])
 ikine_result3 = dofbot.ik_LM(target_pos3)[0]
-print("ikine: ", np.array(ikine_result3) / 3.14 * 180.)
+print("ikine: ", np.array(ikine_result3))
 dofbot.plot(q=ikine_result3, block=True)
 
 import matplotlib.pyplot as plt
